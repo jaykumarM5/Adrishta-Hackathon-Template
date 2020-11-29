@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:i_voted/screens/OTPPage.dart';
-import 'package:i_voted/data.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:flutter/services.dart';
 import 'package:i_voted/Data.dart';
 
-class Login extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
   bool isSpin = false;
 
   @override

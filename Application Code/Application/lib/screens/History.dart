@@ -12,7 +12,7 @@ class _HistoryState extends State<History> {
       child: Scaffold(
         body: Container(
             child: Center(
-          child: Text('History Page New'),
+          child: Text('History Uploaded from VS'),
         )),
       ),
     );

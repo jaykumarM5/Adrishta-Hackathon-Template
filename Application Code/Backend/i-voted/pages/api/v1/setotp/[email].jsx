@@ -10,9 +10,7 @@ export default function SendOtp(req, res) {
       Date.now().toString(36) + Math.random().toString(36).substr(2, 5)
     ).toUpperCase() +
     " )";
-  var message =
-    "This is your One Time Password Login for Smit Yukti App: " + otpVal;
-
+  
   var mailOptions = {
     from: "Tech Adrishta 2.5",
     to: mailaddress,

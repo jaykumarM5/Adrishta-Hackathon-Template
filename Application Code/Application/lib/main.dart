@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:i_voted/screens/History.dart';
 import 'package:i_voted/screens/HomePage.dart';
@@ -9,6 +7,8 @@ import 'package:i_voted/screens/PollsPage.dart';
 import 'package:i_voted/Navigate.dart';
 import 'package:i_voted/screens/AboutPage.dart';
 import 'package:i_voted/screens/Splash.dart';
+
+// Main Page from where the application starts executing
 
 void main() {
   runApp(MaterialApp(

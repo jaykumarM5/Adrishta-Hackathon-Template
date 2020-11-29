@@ -8,12 +8,14 @@ import 'package:i_voted/Navigate.dart';
 import 'package:i_voted/screens/AboutPage.dart';
 import 'package:i_voted/screens/Splash.dart';
 
+import 'Data.dart';
+
 // Main Page from where the application starts executing
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'splash',
+    initialRoute: 'otp',
     routes: {
       'login': (context) => LoginPage(),
       'nav': (context) => Navigate(),
@@ -22,7 +24,7 @@ void main() {
       'polls': (context) => PollsPage(),
       'history': (context) => History(),
       'home': (context) => HomePage(),
-      'otp': (context) => OTPPage(),
+      'otp': (context) => OTPPage(email, otp),
     },
   ));
 }

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 String email = '';
-String otp;
+String otp = '1';
 
 String otpUrl =
     'https://i-voted.vercel.app/api/v1/setotp/rishabh12536@gmail.com';

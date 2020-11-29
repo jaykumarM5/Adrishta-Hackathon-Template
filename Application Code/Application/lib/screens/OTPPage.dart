@@ -6,27 +6,30 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:i_voted/Data.dart';
 import 'package:i_voted/Navigate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
-class OTP extends StatefulWidget {
+class OTPPage extends StatefulWidget {
   final String email;
   final String otp;
-
-  OTP(this.email, this.otp);
+  // constructor passes email and otp received in the Login screen
+  OTPPage(this.email, this.otp);
 
   @override
-  _OTPState createState() => _OTPState();
+  _OTPPageState createState() => _OTPPageState();
 }
 
-class _OTPState extends State<OTP> {
+class _OTPPageState extends State<OTPPage> {
+  // For fetching saved email in the app
   void rememberUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('email', email);
   }
 
+  // for recognising taps
   var onTapRecognizer;
-
+  // for controlling text operation in the text box
   TextEditingController textEditingController = TextEditingController();
-
+  // for controlling errors
   StreamController<ErrorAnimationType> errorController;
 
   bool hasError = false;
@@ -34,6 +37,7 @@ class _OTPState extends State<OTP> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey = GlobalKey<FormState>();
 
+  // acts like constructor of state
   @override
   void initState() {
     onTapRecognizer = TapGestureRecognizer()
@@ -44,6 +48,7 @@ class _OTPState extends State<OTP> {
     super.initState();
   }
 
+  // destructor
   @override
   void dispose() {
     errorController.close();
@@ -64,6 +69,7 @@ class _OTPState extends State<OTP> {
           child: ListView(
             children: <Widget>[
               SizedBox(height: 30),
+              // Page top
               Container(
                 height: MediaQuery.of(context).size.height / 3,
                 child: FlareActor(
@@ -74,6 +80,7 @@ class _OTPState extends State<OTP> {
                 ),
               ),
               SizedBox(height: 8),
+              // Page middle
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
@@ -103,6 +110,7 @@ class _OTPState extends State<OTP> {
               SizedBox(
                 height: 20,
               ),
+              // Text Input box
               Form(
                 key: formKey,
                 child: Padding(
@@ -180,20 +188,45 @@ class _OTPState extends State<OTP> {
               SizedBox(
                 height: 20,
               ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text: "Didn't receive the code? ",
-                    style: TextStyle(color: Colors.black54, fontSize: 15),
-                    children: [
-                      TextSpan(
-                          text: " RESEND",
-                          recognizer: onTapRecognizer,
-                          style: TextStyle(
-                              color: Color(0xFF91D3B3),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16))
-                    ]),
+              // CountDown Timer to resend OTP
+              Countdown(
+                seconds: 120,
+                interval: Duration(seconds: 1),
+                build: (context, time) {
+                  return time > 1
+                      ? RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: "Didn't receive the code? ",
+                              style: TextStyle(
+                                  color: Colors.black54, fontSize: 15),
+                              children: [
+                                TextSpan(
+                                  text: "wait ${time.toInt()} sec",
+                                  style: TextStyle(
+                                      color: Color(0xFF91D3B3),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                )
+                              ]),
+                        )
+                      : RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: "Didn't receive the code? ",
+                              style: TextStyle(
+                                  color: Colors.black54, fontSize: 15),
+                              children: [
+                                TextSpan(
+                                    text: " RESEND",
+                                    recognizer: onTapRecognizer,
+                                    style: TextStyle(
+                                        color: Color(0xFF91D3B3),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16))
+                              ]),
+                        );
+                },
               ),
               SizedBox(
                 height: 14,
@@ -220,6 +253,7 @@ class _OTPState extends State<OTP> {
                       } else {
                         setState(() async {
                           hasError = false;
+                          // shows a snackbar
                           scaffoldKey.currentState.showSnackBar(SnackBar(
                             content: Text("OTP Verified"),
                             duration: Duration(seconds: 2),
@@ -236,7 +270,7 @@ class _OTPState extends State<OTP> {
                     },
                     child: Center(
                         child: Text(
-                      "VERIFY".toUpperCase(),
+                      "VERIFY",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -267,7 +301,7 @@ class _OTPState extends State<OTP> {
                   FlatButton(
                     child: Text("Clear"),
                     onPressed: () {
-                      textEditingController.clear();
+                      textEditingController.clear(); // clears the text box
                     },
                   ),
                 ],

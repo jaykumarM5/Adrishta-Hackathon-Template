@@ -39,7 +39,9 @@ List of team member names and email IDs with their contributions.
 |-----------|-----|------------|
 |Member 1|mem1@example.com|Something important|
 |Member 2|mem2@example.com|Something important|
-|Member 3|mem3@example.com|Something important|
+|Rishabh |rishabh12536@gmail.com|Backend Operations|
 
 ### References
-Affix links to the online tools/repositories/blogs etc., which helped you along the development of the project
+
+#### API Used :
+1) Sendin Blue for sending emails for OTP. <a href="https://sendinblue.com" target="_blank">(View SendinBlue.com)</a>

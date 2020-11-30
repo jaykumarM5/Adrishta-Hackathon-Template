@@ -7,7 +7,7 @@ import 'package:i_voted/screens/PollsPage.dart';
 import 'package:i_voted/Navigate.dart';
 import 'package:i_voted/screens/AboutPage.dart';
 import 'package:i_voted/screens/Splash.dart';
-
+import 'package:i_voted/screens/AdminPage.dart';
 import 'Data.dart';
 
 // Main Page from where the application starts executing
@@ -25,6 +25,7 @@ void main() {
       'history': (context) => History(),
       'home': (context) => HomePage(),
       'otp': (context) => OTPPage(email, otp),
+      'admin': (context) => AdminPage(),
     },
   ));
 }

@@ -7,22 +7,27 @@ import 'package:i_voted/screens/PollsPage.dart';
 import 'package:i_voted/Navigate.dart';
 import 'package:i_voted/screens/AboutPage.dart';
 import 'package:i_voted/screens/Splash.dart';
+import 'package:i_voted/screens/AdminPage.dart';
+import 'Data.dart';
 
 // Main Page from where the application starts executing
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: 'splash',
-    routes: {
-      'login': (context) => LoginPage(),
-      'nav': (context) => Navigate(),
-      'about': (context) => About(),
-      'splash': (context) => Splash(),
-      'polls': (context) => PollsPage(),
-      'history': (context) => History(),
-      'home': (context) => HomePage(),
-      'otp': (context) => OTPPage(),
-    },
-  ));
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'admin',
+      routes: {
+        'login': (context) => LoginPage(),
+        'nav': (context) => Navigate(),
+        'about': (context) => About(),
+        'splash': (context) => Splash(),
+        'polls': (context) => PollsPage(),
+        'history': (context) => History(),
+        'home': (context) => HomePage(),
+        'otp': (context) => OTPPage(email, otp),
+        'admin': (context) => AdminPage(),
+      },
+    ),
+  );
 }

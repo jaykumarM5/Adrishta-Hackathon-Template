@@ -17,6 +17,8 @@ String rishabhLinkedIn = 'https://www.linkedin.com/in/rishabh0508/';
 String otpUrl =
     'https://i-voted.vercel.app/api/v1/setotp/rishabh12536@gmail.com';
 
+String tempEmail = '';
+
 Future login() async {
   try {
     var response = await http.get(otpUrl + email);

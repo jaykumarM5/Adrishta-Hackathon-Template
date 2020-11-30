@@ -41,20 +41,21 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                   ),
                   Container(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    children: [
-                      Text(
-                        'I V',
-                        style: TextStyle(fontFamily: 'Piedra', fontSize: 150),
-                      ),
-                      Text(
-                        'O T E D',
-                        style: TextStyle(fontFamily: 'Piedra', fontSize: 15),
-                      ),
-                    ],
-                  )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      children: [
+                        Text(
+                          'I V',
+                          style: TextStyle(fontFamily: 'Piedra', fontSize: 150),
+                        ),
+                        Text(
+                          'O T E D',
+                          style: TextStyle(fontFamily: 'Piedra', fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[

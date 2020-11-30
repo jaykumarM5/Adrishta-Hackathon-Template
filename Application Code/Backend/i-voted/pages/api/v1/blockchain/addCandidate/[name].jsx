@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const IpfsHttpClient = require("ipfs-http-client");
 var url = process.env.MONGO_SERVER;
-const textToImage = require("text-to-image");
+
 
 export default (req, res) => {
   const ipfs = IpfsHttpClient({

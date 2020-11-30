@@ -37,6 +37,7 @@ dependencies:
   flip_card: ^0.4.4
   syncfusion_flutter_charts: ^18.3.51
   rflutter_alert: ^1.1.0
+  flutter_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:

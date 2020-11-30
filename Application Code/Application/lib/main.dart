@@ -13,19 +13,21 @@ import 'Data.dart';
 // Main Page from where the application starts executing
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: 'splash',
-    routes: {
-      'login': (context) => LoginPage(),
-      'nav': (context) => Navigate(),
-      'about': (context) => About(),
-      'splash': (context) => Splash(),
-      'polls': (context) => PollsPage(),
-      'history': (context) => History(),
-      'home': (context) => HomePage(),
-      'otp': (context) => OTPPage(email, otp),
-      'admin': (context) => AdminPage(),
-    },
-  ));
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'admin',
+      routes: {
+        'login': (context) => LoginPage(),
+        'nav': (context) => Navigate(),
+        'about': (context) => About(),
+        'splash': (context) => Splash(),
+        'polls': (context) => PollsPage(),
+        'history': (context) => History(),
+        'home': (context) => HomePage(),
+        'otp': (context) => OTPPage(email, otp),
+        'admin': (context) => AdminPage(),
+      },
+    ),
+  );
 }

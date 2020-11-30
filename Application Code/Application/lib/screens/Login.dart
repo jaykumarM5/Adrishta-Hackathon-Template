@@ -41,34 +41,51 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                   ),
                   Container(
-                    child: Text(
-                      'I V',
-                      style: TextStyle(fontFamily: 'Piedro'),
-                    ),
-                  ),
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    children: [
+                      Text(
+                        'I V',
+                        style: TextStyle(fontFamily: 'Piedra', fontSize: 150),
+                      ),
+                      Text(
+                        'O T E D',
+                        style: TextStyle(fontFamily: 'Piedra', fontSize: 15),
+                      ),
+                    ],
+                  )),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
                         alignment: Alignment.center,
-                        width: size.width * 0.8,
-                        height: 40,
+                        width: size.width * 0.30,
                         decoration: BoxDecoration(
-                            color: Color(0xFFB5A9FF),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color(0x550000A0),
-                                  blurRadius: 2.0,
-                                  spreadRadius: 2.0,
-                                  offset: Offset(5, 5))
-                            ],
-                            borderRadius: BorderRadius.circular(30.0)),
-                        child: Text(
-                          'Yukti Login',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                          // color: Color(0xFFB5A9FF),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color(0x550000A0),
+                                blurRadius: 1.0,
+                                spreadRadius: 1.0,
+                                offset: Offset(2, 1))
+                          ],
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(size.width * 0.15),
+                          ),
+                        ),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          minRadius: size.width * 0.15,
+                          maxRadius: size.width * 0.15,
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 22,
+                                fontFamily: 'Piedra',
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ],
@@ -76,23 +93,20 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 40),
                   Center(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+                      // Email Text Box
                       Container(
-                        padding: EdgeInsets.only(right: 10, top: 10),
-                        margin: EdgeInsets.only(right: 50),
+                        padding: EdgeInsets.only(right: 10, left: 10),
+                        margin: EdgeInsets.only(right: 10, left: 10, top: 20),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(40),
-                              topRight: Radius.circular(40)),
+                          borderRadius: BorderRadius.all(Radius.circular(40)),
                           color: Colors.grey[200],
                         ),
                         child: Material(
                           elevation: 20.0,
                           shadowColor: Colors.grey[900],
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(40),
-                              topRight: Radius.circular(40)),
+                          borderRadius: BorderRadius.all(Radius.circular(40)),
                           child: TextFormField(
                             textAlign: TextAlign.center,
                             showCursor: true,
@@ -101,16 +115,20 @@ class _LoginPageState extends State<LoginPage> {
                               email = value;
                             },
                             decoration: InputDecoration(
-                              hintText: 'Email', //var hintText
+                              suffixText: '@smit.smu.edu.in',
+                              suffixStyle: TextStyle(
+                                color: Colors.grey,
+                              ),
+                              hintStyle: TextStyle(),
+                              hintText:
+                                  '                   Email', //var hintText
                               fillColor: Colors.white,
                               filled: true,
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                              // contentPadding:
+                              //     EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(20),
-                                  bottomRight: Radius.circular(20),
-                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(40)),
                                 borderSide:
                                     BorderSide(color: Colors.white, width: 3.0),
                               ),
@@ -118,14 +136,14 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 50),
+
+                      // Request OTP Button
                       Material(
                         color: Color(0xFFB5A9FF),
                         elevation: 20,
                         shadowColor: Colors.grey[900],
-                        borderRadius: new BorderRadius.only(
-                            bottomLeft: Radius.circular(40),
-                            topLeft: Radius.circular(40)),
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
                         child: FlatButton(
                           onPressed: () async {
                             setState(() {
@@ -143,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                             }
                           },
                           child: Container(
-                            padding: EdgeInsets.only(left: 40, right: 20),
+                            margin: EdgeInsets.only(left: 10, right: 10),
                             child: Text(
                               'Request OTP',
                               style:

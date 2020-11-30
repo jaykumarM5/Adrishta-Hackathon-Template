@@ -68,7 +68,7 @@ flutter:
   fonts:
     - family: Piedra
       fonts:
-        - asset: assets/fonts/Piedra/Piedra-Regular.ttf
+        - asset: assets/fonts/Piedra-Regular.ttf
     # - family: Schyler
     #   fonts:
     #     - asset: fonts/Schyler-Regular.ttf

@@ -15,7 +15,7 @@ import 'Data.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'otp',
+    initialRoute: 'login',
     routes: {
       'login': (context) => LoginPage(),
       'nav': (context) => Navigate(),

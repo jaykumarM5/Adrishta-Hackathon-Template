@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class AdminPage extends StatefulWidget {
@@ -8,6 +10,7 @@ class AdminPage extends StatefulWidget {
 class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -30,8 +33,9 @@ class _AdminPageState extends State<AdminPage> {
                     offset: Offset(2, 2),
                   ),
                 ],
-                borderRadius: BorderRadius.all(
-                  Radius.elliptical(100, 50),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
                 ),
               ),
               child: Text(
@@ -45,9 +49,49 @@ class _AdminPageState extends State<AdminPage> {
             SizedBox(
               height: 30.0,
             ),
+            Expanded(
+              child: GridView.count(
+                physics: BouncingScrollPhysics(),
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                mainAxisSpacing: 0,
+                crossAxisSpacing: 0,
+                crossAxisCount: 2,
+                children: [
+                  GridButton(),
+                  FlatButton(
+                    child: Text('Ban Candidate'),
+                    onPressed: () {},
+                  ),
+                  FlatButton(
+                    child: Text('Ban Voter'),
+                    onPressed: () {},
+                  ),
+                  FlatButton(
+                    child: Text('Revoke Ban on Voter'),
+                    onPressed: () {},
+                  ),
+                  FlatButton(
+                      child: Text('Revoke Ban on Candidate'), onPressed: () {}),
+                ],
+              ),
+            ),
           ],
         )),
       ),
+    );
+  }
+}
+
+class GridButton extends StatelessWidget {
+  GridButton({this.text, this.url});
+  final String url;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      child: Text('Add Candidate'),
+      onPressed: () {},
     );
   }
 }

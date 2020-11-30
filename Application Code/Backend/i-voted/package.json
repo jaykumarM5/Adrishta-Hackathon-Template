@@ -1,15 +1,17 @@
 {
-  "name": "i-voted",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "10.0.3",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
-  }
+    "name": "i-voted",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "ipfs-http-client": "^48.1.2",
+        "mongodb": "^3.6.3",
+        "next": "10.0.3",
+        "react": "17.0.1",
+        "react-dom": "17.0.1"
+    }
 }

@@ -81,6 +81,8 @@ export default async function main(req, res) {
           }
           db.close();
         });
+    } else {
+      res.json({status : 400});
     }
   });
 }

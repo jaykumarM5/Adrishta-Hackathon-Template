@@ -23,14 +23,14 @@ export default (req, res) => {
 
     console.log(myobj);
 
-    // MongoClient.connect(url, function (err, db) {
-    //   if (err) throw err;
-    //   var dbo = db.db("iVoted");
-    //   dbo.collection("candidates").insertOne(myobj, function (err, res) {
-    //     if (err) throw err;
-    //     console.log("Log : 1 document inserted ");
-    //   });
-    // });
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("iVoted");
+      dbo.collection("candidates").insertOne(myobj, function (err, res) {
+        if (err) throw err;
+        console.log("Log : 1 document inserted ");
+      });
+    });
     res.json({ status: "done" });
   }
 

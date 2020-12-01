@@ -17,7 +17,6 @@ export default (req, res) => {
       cadid: name,
       year: new Date().getFullYear(),
       bio: parsedBody.bio,
-      dp: parsedBody.Symbol,
       name: parsedBody.name,
       votes:0
     };

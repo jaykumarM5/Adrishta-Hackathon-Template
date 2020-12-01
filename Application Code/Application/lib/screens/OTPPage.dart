@@ -7,13 +7,9 @@ import 'package:i_voted/Data.dart';
 import 'package:i_voted/Navigate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timer_count_down/timer_count_down.dart';
+import 'package:i_voted/screens/ElectionDisplay.dart';
 
 class OTPPage extends StatefulWidget {
-  final String email;
-  final String otp;
-  // constructor passes email and otp received in the Login screen
-  OTPPage(this.email, this.otp);
-
   @override
   _OTPPageState createState() => _OTPPageState();
 }
@@ -22,8 +18,8 @@ class _OTPPageState extends State<OTPPage> {
   // For fetching saved email in the app
   void rememberUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('email', email);
-    prefs.setString('role', role);
+    prefs.setString("email", email);
+    prefs.setString("role", role);
   }
 
   // for recognising taps
@@ -41,13 +37,13 @@ class _OTPPageState extends State<OTPPage> {
   // acts like constructor of state
   @override
   void initState() {
-    addVoter();
     onTapRecognizer = TapGestureRecognizer()
       ..onTap = () {
         login();
       };
     errorController = StreamController<ErrorAnimationType>();
     super.initState();
+    addVoter();
   }
 
   // destructor
@@ -99,7 +95,7 @@ class _OTPPageState extends State<OTPPage> {
                       text: "Enter the code sent to ",
                       children: [
                         TextSpan(
-                            text: widget.email,
+                            text: email,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -240,13 +236,13 @@ class _OTPPageState extends State<OTPPage> {
                   height: 50,
                   child: FlatButton(
                     onPressed: () {
-                      print(widget.otp);
+                      print(otp);
                       print(currentText);
 
                       formKey.currentState.validate();
                       // conditions for validating
                       if (currentText.length != 6 ||
-                          currentText.toString() != widget.otp) {
+                          currentText.toString() != otp) {
                         errorController.add(ErrorAnimationType
                             .shake); // Triggering error shake animation
                         setState(() {
@@ -264,7 +260,9 @@ class _OTPPageState extends State<OTPPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Navigate(),
+                              builder: (context) => role == 'admin'
+                                  ? ElectionDisplay()
+                                  : Navigate(),
                             ),
                           );
                         });

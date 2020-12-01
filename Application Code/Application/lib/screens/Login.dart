@@ -156,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => OTPPage(email, otp),
+                                  builder: (context) => OTPPage(),
                                 ),
                               );
                             }

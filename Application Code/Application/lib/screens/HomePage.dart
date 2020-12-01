@@ -14,11 +14,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Widget> listofCandidate = [];
   var data; // for storing fetched data
+  // List data = [ // get the list here from the api
+  //   // Fetch the candidate list here
+  //   {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},      // logolink will be the link of leader's photo
+  //   {"name": "Jay Kumar", "logolink": "LOGO"},
+  //   {"name": "Rishabh", "logolink": "LOGO"},
+  //   {"name": "Abhishek", "logolink": "LOGO"},
+  //   {"name": "Adi", "logolink": "LOGO"}
+  // ];
   Future<List> getData(size) async {
     // change the return type to future when getting data using http
     try {
       var response = await http.get(candidateListUrl + widget.id);
       print(response.body);
+      print('Candidate List');
       data = json.decode(response.body);
     } catch (e) {
       print(e);
@@ -39,7 +48,6 @@ class _HomePageState extends State<HomePage> {
       listofCandidate.add(
         RaisedButton(
             onPressed: () {
-              print(isPressed);
               vote(email, data[i]["name"]);
               Fluttertoast.showToast(msg: 'Done');
             }, // if the button is pressed the color of the button changes
@@ -70,15 +78,22 @@ class _HomePageState extends State<HomePage> {
                     '${data[i]["bio"]}',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontFamily: 'Piedra'),
                   ),
                   title: Text(
                     '${data[i]["name"]}',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontFamily: 'Piedra'),
+                  ),
+                  subtitle: Text(
+                    'Tap to vote',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
               ),

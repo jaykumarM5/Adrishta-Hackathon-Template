@@ -17,7 +17,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'splash',
+      initialRoute: 'history',
       routes: {
         'electionUser': (context) => ElectionDisplayUser(),
         'electiondisplay': (context) => ElectionDisplay(),
@@ -27,7 +27,7 @@ void main() {
         'splash': (context) => Splash(),
         'history': (context) => History(),
         'home': (context) => HomePage(),
-        'otp': (context) => OTPPage(email, otp),
+        'otp': (context) => OTPPage(),
       },
     ),
   );

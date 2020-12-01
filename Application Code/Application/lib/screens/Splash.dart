@@ -12,8 +12,8 @@ class _SplashState extends State<Splash> {
   startTime() async {
     // fetches if email and role of the user is stores or not ie he is logged in or not
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    email = prefs.get('email') != null ? prefs.get('email') : '';
-    role = prefs.get('role') != null ? prefs.get('role') : '';
+    email = prefs.get("email") != null ? prefs.get("email") : '';
+    role = prefs.get("role") != null ? prefs.get("role") : '';
     var _duration = Duration(seconds: 2);
     return Timer(_duration, navigationPage);
   }

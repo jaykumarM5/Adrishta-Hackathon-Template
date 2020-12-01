@@ -12,15 +12,9 @@ class VoteButton extends StatefulWidget {
 }
 
 class _VoteButtonState extends State<VoteButton> {
-  bool enable = false;
+  bool enable = true;
   String msg = '';
   bool flag = false;
-
-  @override
-  initState() {
-    super.initState();
-    checkVoter(); // checks if the voter is applicable to vote or not
-  }
 
   void checkVoter() async {
     flag = await checkVote();
@@ -28,6 +22,7 @@ class _VoteButtonState extends State<VoteButton> {
       flag = true;
     }
     setState(() {
+      print(flag.toString());
       if (flag) {
         enable = true;
         msg = 'You are authorised to vote';
@@ -35,6 +30,13 @@ class _VoteButtonState extends State<VoteButton> {
         msg = 'You can\'t vote';
       }
     });
+  }
+
+  @override
+  initState() {
+    super.initState();
+    checkVoter();
+    // checks if the voter is applicable to vote or not
   }
 
   Widget build(BuildContext context) {

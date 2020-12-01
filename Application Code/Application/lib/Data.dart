@@ -2,7 +2,6 @@
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 String email = '';
 String otp = '1';
@@ -48,25 +47,23 @@ String rishabhLinkedIn = 'https://www.linkedin.com/in/rishabh0508/';
 
 String tempEmail = '';
 
-Future login() async {
+void login() async {
   try {
     var response = await http.get(otpUrl + email + '@smit.smu.edu.in');
-    print(response.body);
     var data = json.decode(response.body);
     otp = data["otp"].toString();
     role = data["role"];
     print(otp);
+    print(role);
   } catch (e) {
     print(e);
   }
-  return;
 }
 
 Future addCandidate(id) async {
   try {
     var response = await http.post(candidateAddUrl + tempEmail,
         body: jsonEncode({"bio": bio, "name": candidateName, 'eventid': id}));
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {
@@ -78,7 +75,6 @@ Future addCandidate(id) async {
 Future removeCandidate(id) async {
   try {
     var response = await http.get(candidateRMUrl + '$id/' + tempEmail);
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {
@@ -90,7 +86,6 @@ Future removeCandidate(id) async {
 Future banVoter() async {
   try {
     var response = await http.get(voterBanUrl + tempEmail + '/ban');
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {
@@ -102,7 +97,6 @@ Future banVoter() async {
 Future revokeBanVoter() async {
   try {
     var response = await http.get(voterRevokeUrl + tempEmail + '/revokeban');
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {
@@ -115,7 +109,6 @@ Future addElection(name, from, to) async {
   try {
     var response = await http.post(eventAddUrl,
         body: jsonEncode({"name": name, 'from': from, "to": to}));
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {
@@ -128,7 +121,6 @@ Future vote(voter, candidate) async {
   try {
     var response = await http.get(voteUrl1 + voter + '/' + candidate);
     var response1 = await http.get(voteUrl2 + voter + '/' + candidate);
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {
@@ -140,25 +132,25 @@ Future vote(voter, candidate) async {
 Future<bool> checkVote() async {
   try {
     var response = await http.get(checkVoterUrl + email + '/check');
-    print(response.body);
     var data = json.decode(response.body);
     var response1 =
         await http.get('https://gateway.ipfs.io/ipfs/' + data["lastBlock"]);
-    var data1 = json.decode(response.body);
-    if (data1["vr"] == 'alright') {
+    var data1 = json.decode(response1.body);
+    if (data1["vr"] == "alright") {
       return true;
     } else {
+      print("inside else");
       return false;
     }
   } catch (e) {
     print(e);
   }
+  return true;
 }
 
 Future addVoter() async {
   try {
     var response = await http.get(addVoterUrl + email + '/alright');
-    print(response.body);
     var data = json.decode(response.body);
     print(data["status"]);
   } catch (e) {

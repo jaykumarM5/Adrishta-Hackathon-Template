@@ -39,7 +39,6 @@ dependencies:
   rflutter_alert: ^1.1.0
   flutter_icons: ^1.1.0
   draggable_fab: ^0.1.1
-  auro_avatar: "^0.1.0"
   fluttertoast: ^7.1.5
 
 dev_dependencies:

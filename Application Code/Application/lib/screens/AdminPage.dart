@@ -128,9 +128,7 @@ class _AdminPageState extends State<AdminPage> {
                             MaterialPageRoute(
                               builder: (context) => Lists(
                                 title: 'List of Candidates',
-                                url:
-                                    'https://i-voted.vercel.app/api/v1/blockchain/listCandidate/' +
-                                        widget.id,
+                                id: widget.id,
                               ),
                             ),
                           );
@@ -145,6 +143,7 @@ class _AdminPageState extends State<AdminPage> {
         ),
         floatingActionButton: DraggableFab(
           child: FloatingActionButton(
+            backgroundColor: Colors.deepOrange[600],
             onPressed: () async {
               // to delete all the saved data and logout
               SharedPreferences prefs = await SharedPreferences.getInstance();

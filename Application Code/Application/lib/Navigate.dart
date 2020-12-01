@@ -126,7 +126,7 @@ class _NavigateState extends State<Navigate> {
           onPressed: () async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
             prefs.setString('email', '');
-            prefs.setString('email', '');
+            prefs.setString('role', '');
             Navigator.pushNamed(context, 'login');
           },
           child: Icon(Icons.logout),

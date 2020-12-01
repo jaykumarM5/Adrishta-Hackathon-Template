@@ -1,35 +1,36 @@
-## Team Number \ Team 16 - \ I-Voted
-
-The participants are required to fork this repository and create a public Github repository under their own username (Single repository per team). *Clone the repo on your local system and build on top of that*
-
-The following created sections in this README.md need to be duly filled, highlighting the denoted points for the solution/implementation. 
-
-**Please feel free to create further sub-sections in this markdown.** The idea is to understand all the particulars of your solution in a singular document.
+## Team Number \ Team 16 \ I-Voted
 
 ### Project Overview
 
-A brief description of 
-* What problem did the team try to solve?
+#### What we tried to solve?
 
-* What is the proposed solution?
+* We have tried to solve the problem of Centralized Authority Involved in conduction of Election.
 
 ### Solution Description
 
-Explain your solution to the problem in detail here.
+* Our approach to solve the problem of centralized system was to create a channel based blockchain, where every log of the user is added to the blockchain.
+* Every Collection gets a snapshot creatd at reqular interval of time, which also has the has of hashes of privous snapshots.
+* This chain helps to go back and check the malpractice with the data, as any single change in the block will change the hash value of block leading to breakage in the chain.
+* This method helps us to remove a central power and just keep the moderator to the network.
+* Every Block is uploaded to IPFS Network which can be checked at any time by anyone, but also maitaining the privacy and dignity of the system.
 
 #### Architecture Diagram
 
-Affix an image of the flow diagram/architecture diagram of the solution
+![Architecture](res/Architecture.png?raw=true "Architecture")
 
 #### Technical Description
 
 An overview of:
-* What technologies/versions were used
+* List of Technologies used :
+  1) NextJS (API Endpoints)
+  2) Vercel (Deployments)
+  3) IPFS (For uploading Blocks)
+  4) MongoDB (Database)
+  5) Flutter (Front end)
 
 * Setup/Installations required to run the solution
 
-* Instructions to run the submitted code
-
+* You just need to install the APK in your Android Phone to run the solution.
 ### Screenshots
 Affix the relevant screenshots of the developed project here.
 
@@ -37,11 +38,14 @@ Affix the relevant screenshots of the developed project here.
 List of team member names and email IDs with their contributions.
 |Member Name|Email|Contribution|
 |-----------|-----|------------|
-|Member 1|mem1@example.com|Something important|
-|Member 2|mem2@example.com|Something important|
-|Rishabh |rishabh12536@gmail.com|Backend Operations|
+|Jay Kumar |jaikumar.saganjel@gmail.com|UI, Frontend|
+|Suraj Kumar Ojha|kumarsurajojha6012001@gmail.com |UI , Frontend|
+|Rishabh |rishabh12536@gmail.com|Blockchain, API, Database|
 
 ### References
 
 #### API Used :
-1) Sendin Blue for sending emails for OTP. <a href="https://sendinblue.com" target="_blank">(View SendinBlue.com)</a>
+1) Sendin Blue for sending emails for OTP. <a href="https://sendinblue.com" target="_blank">(View)</a>
+
+#### Blogs/Docs : 
+1) JS-IPFS for uploading / creating the Blocks for BlockChain. <a href="https://js.ipfs.io/" target="_blank">(View)</a>

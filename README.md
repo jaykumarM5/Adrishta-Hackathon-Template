@@ -31,23 +31,29 @@ An overview of:
 * You just need to install the APK in your Android Phone to run the solution.
 ---
 ### Screenshots
-![Screenshot](res/1.JPG?raw=true "Screenshot")
-![Screenshot](res/2.JPG?raw=true "Screenshot")
-![Screenshot](res/3.JPG?raw=true "Screenshot")
-![Screenshot](res/4.JPG?raw=true "Screenshot")
-![Screenshot](res/5.JPG?raw=true "Screenshot")
-![Screenshot](res/6.JPG?raw=true "Screenshot")
-![Screenshot](res/7.JPG?raw=true "Screenshot")
-![Screenshot](res/8.JPG?raw=true "Screenshot")
-![Screenshot](res/9.JPG?raw=true "Screenshot")
-![Screenshot](res/10.JPG?raw=true "Screenshot")
-![Screenshot](res/11.JPG?raw=true "Screenshot")
-![Screenshot](res/12.JPG?raw=true "Screenshot")
-![Screenshot](res/13.JPG?raw=true "Screenshot")
-![Screenshot](res/14.JPG?raw=true "Screenshot")
-![Screenshot](res/15.JPG?raw=true "Screenshot")
-![Screenshot](res/16.JPG?raw=true "Screenshot")
-![Screenshot](res/16.JPG?raw=true "Screenshot")
+
+![Screenshot](res/12.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/11.JPG?raw=true "Screenshot")<br/>
+
+![Screenshot](res/13.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/14.JPG?raw=true "Screenshot")<br/>
+
+![Screenshot](res/16.JPG?raw=true "Screenshot")<br/>
+
+![Screenshot](res/1.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/2.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/3.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/4.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/5.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/6.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/7.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/8.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/9.JPG?raw=true "Screenshot")<br/>
+![Screenshot](res/10.JPG?raw=true "Screenshot")<br/>
+
+![Screenshot](res/15.JPG?raw=true "Screenshot")<br/>
+
+![Screenshot](res/17.JPG?raw=true "Screenshot")<br/>
 ---
 ### Team Members
 List of team member names and email IDs with their contributions.

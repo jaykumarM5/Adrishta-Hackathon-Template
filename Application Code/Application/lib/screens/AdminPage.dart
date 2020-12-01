@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:i_voted/Data.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:draggable_fab/draggable_fab.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminPage extends StatefulWidget {
   @override
@@ -14,83 +16,96 @@ class _AdminPageState extends State<AdminPage> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-            child: Column(
-          children: [
-            SizedBox(
-              height: 25.0,
-            ),
-            Container(
-              height: 50.0,
-              margin: EdgeInsets.only(left: 10.0, right: 10.0),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey[300],
-                    blurRadius: 5.0,
-                    spreadRadius: 1.0,
-                    offset: Offset(2, 2),
-                  ),
-                ],
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 25.0,
               ),
-              child: Text(
-                'Admin',
-                style: TextStyle(
-                    fontSize: 23.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              ),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 30),
-                width: size.width * 0.95,
+              Container(
+                height: 50.0,
+                margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
-                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey[400], //Color(0x550000FF),
+                      color: Colors.grey[300],
                       blurRadius: 5.0,
                       spreadRadius: 1.0,
                       offset: Offset(2, 2),
                     ),
                   ],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
+                  ),
                 ),
-                child: GridView.count(
-                  physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  mainAxisSpacing: 15,
-                  crossAxisSpacing: 15,
-                  crossAxisCount: 2,
-                  children: [
-                    // Admin Control Buttons
-                    GridButton(
-                      text: 'Add Candidate',
-                    ),
-                    GridButton(text: 'Ban Candidate'),
-                    GridButton(text: 'Ban Voter'),
-                    GridButton(text: 'Revoke Ban on Voter'),
-                    GridButton(text: 'Revoke Ban on Candidate'),
-                  ],
+                child: Text(
+                  'Admin',
+                  style: TextStyle(
+                      fontSize: 23.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
                 ),
               ),
-            ),
-          ],
-        )),
+              SizedBox(
+                height: 30.0,
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 30),
+                  width: size.width * 0.95,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[400], //Color(0x550000FF),
+                        blurRadius: 5.0,
+                        spreadRadius: 1.0,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
+                  child: GridView.count(
+                    physics: BouncingScrollPhysics(),
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    mainAxisSpacing: 15,
+                    crossAxisSpacing: 15,
+                    crossAxisCount: 2,
+                    children: [
+                      // Admin Control Buttons
+                      GridButton(
+                        text: 'Add Candidate',
+                      ),
+                      GridButton(text: 'Ban Candidate'),
+                      GridButton(text: 'Ban Voter'),
+                      GridButton(text: 'Revoke Ban on Voter'),
+                      GridButton(text: 'Revoke Ban on Candidate'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: DraggableFab(
+          child: FloatingActionButton(
+            onPressed: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString('email', '');
+              prefs.setString('role', '');
+
+              Navigator.pushNamed(context, 'login');
+            },
+            child: Icon(Icons.logout),
+          ),
+        ),
       ),
     );
   }

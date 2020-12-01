@@ -231,15 +231,21 @@ Future<List<HistoryCard>> buildCard() {
   // List<Widget> listOfEvents = [];
   //   String url = '${eventUrl}basketball';
   //   var data;
-
-  return [
-    HistoryCard(
-      chartData: [
-        ChartData('David', 25),
-        ChartData('Steve', 38),
-        ChartData('Jack', 34),
-        ChartData('Others', 52)
-      ],
-    ),
-  ];
+  Future.delayed(
+    Duration(seconds: 5),
+    () {
+      return [
+        HistoryCard(
+          chartData: [
+            ChartData('David', 25),
+            ChartData('Steve', 38),
+            ChartData('Jack', 34),
+            ChartData('Others', 52)
+          ],
+          votedFor: 'President',
+          date: '2020',
+        ),
+      ];
+    },
+  );
 }

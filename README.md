@@ -36,27 +36,16 @@ An overview of:
 <img src="res/12.JPG?raw=true" width="150" alt="Screenshots">
 
 #### Login Screen
-<img src="res/11.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/13.JPG?raw=true" width="150" alt="Screenshots">
+<img src="res/11.JPG?raw=true" width="150" alt="Screenshots"><img src="res/13.JPG?raw=true" width="150" alt="Screenshots">
 
 #### OTP Screen
 <img src="res/14.JPG?raw=true" width="150" alt="Screenshots">
 
 #### Voters Panel
-<img src="res/16.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/1.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/2.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/10.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/17.JPG?raw=true" width="150" alt="Screenshots">
+<img src="res/16.JPG?raw=true" width="150" alt="Screenshots"><img src="res/1.JPG?raw=true" width="150" alt="Screenshots"><img src="res/2.JPG?raw=true" width="150" alt="Screenshots"><img src="res/10.JPG?raw=true" width="150" alt="Screenshots"><img src="res/17.JPG?raw=true" width="150" alt="Screenshots">
 
 #### Admins Panel
-<img src="res/3.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/4.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/5.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/6.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/7.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/8.JPG?raw=true" width="150" alt="Screenshots">
-<img src="res/9.JPG?raw=true" width="150" alt="Screenshots">
+<img src="res/3.JPG?raw=true" width="150" alt="Screenshots"><img src="res/4.JPG?raw=true" width="150" alt="Screenshots"><img src="res/5.JPG?raw=true" width="150" alt="Screenshots"><img src="res/6.JPG?raw=true" width="150" alt="Screenshots"><img src="res/7.JPG?raw=true" width="150" alt="Screenshots"><img src="res/8.JPG?raw=true" width="150" alt="Screenshots"><img src="res/9.JPG?raw=true" width="150" alt="Screenshots">
 
 #### About Developers
 <img src="res/15.JPG?raw=true" width="150" alt="Screenshots">

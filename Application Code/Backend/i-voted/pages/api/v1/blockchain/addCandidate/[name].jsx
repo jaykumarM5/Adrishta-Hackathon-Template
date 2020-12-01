@@ -19,6 +19,7 @@ export default (req, res) => {
       bio: parsedBody.bio,
       dp: parsedBody.Symbol,
       name: parsedBody.name,
+      votes:0
     };
 
     console.log(myobj);

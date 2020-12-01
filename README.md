@@ -4,6 +4,7 @@
 
 #### What we tried to solve?
 
+* We have tried to solve the problem of making secure Election Portal for College.
 * We have tried to solve the problem of Centralized Authority Involved in conduction of Election.
 ---
 ### Solution Description

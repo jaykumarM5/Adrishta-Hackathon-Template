@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:i_voted/screens/AboutPage.dart';
 import 'screens/HomePage.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:i_voted/screens/PollsPage.dart';
 import 'package:i_voted/screens/History.dart';
 import 'package:i_voted/screens/HomePage.dart';
-// import 'package:i_voted/screens/';
+import 'package:draggable_fab/draggable_fab.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Navigate extends StatefulWidget {
   @override
@@ -25,13 +25,15 @@ class _NavigateState extends State<Navigate> {
       bottomNavigationBar: isBarVisible
           ? BottomAppBar(
               elevation: 20,
-              color: Color(0xCC00FF00),
+              color: Colors.orange,
               // shape: CircularNotchedRectangle(),
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(30.0),
-                        topLeft: Radius.circular(30.0))),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
+                  ),
+                ),
                 height: 50,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
@@ -49,7 +51,7 @@ class _NavigateState extends State<Navigate> {
                       padding: EdgeInsets.only(left: 20.0, right: 10),
                       icon: Icon(FlutterIcons.home_ant,
                           color:
-                              currentIndex == 0 ? Colors.white : Colors.green),
+                              currentIndex == 0 ? Colors.white : Colors.orange),
                     ),
                     IconButton(
                       onPressed: () {
@@ -62,8 +64,8 @@ class _NavigateState extends State<Navigate> {
                       iconSize: currentIndex == 1 ? 35 : 25.0,
                       padding: EdgeInsets.only(right: 20.0, left: 10),
                       icon: Icon(
-                        Icons.directions_run_outlined,
-                        color: currentIndex == 1 ? Colors.white : Colors.green,
+                        Icons.history,
+                        color: currentIndex == 1 ? Colors.white : Colors.orange,
                       ),
                     ),
                     SizedBox(
@@ -81,22 +83,22 @@ class _NavigateState extends State<Navigate> {
                       padding: EdgeInsets.only(left: 20.0, right: 10),
                       icon: Icon(Icons.video_collection,
                           color:
-                              currentIndex == 2 ? Colors.white : Colors.green),
+                              currentIndex == 2 ? Colors.white : Colors.orange),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _myPage.jumpToPage(3);
-                          currentIndex = 3;
-                          print(currentIndex);
-                        });
-                      },
-                      iconSize: currentIndex == 3 ? 35 : 25.0,
-                      padding: EdgeInsets.only(right: 20.0, left: 10),
-                      icon: Icon(Icons.settings,
-                          color:
-                              currentIndex == 3 ? Colors.white : Colors.green),
-                    )
+                    // IconButton(
+                    //   onPressed: () {
+                    //     setState(() {
+                    //       _myPage.jumpToPage(3);
+                    //       currentIndex = 3;
+                    //       print(currentIndex);
+                    //     });
+                    //   },
+                    //   iconSize: currentIndex == 3 ? 35 : 25.0,
+                    //   padding: EdgeInsets.only(right: 20.0, left: 10),
+                    //   icon: Icon(Icons.settings,
+                    //       color:
+                    //           currentIndex == 3 ? Colors.white : Colors.green),
+                    // )
                   ],
                 ),
               ),
@@ -112,9 +114,20 @@ class _NavigateState extends State<Navigate> {
             currentIndex = index;
           });
         },
-        children: [HomePage(), PollsPage(), History(), About()],
+        children: [HomePage(), History(), About()],
         // physics: NeverScrollableScrollPhysics(),
         physics: BouncingScrollPhysics(),
+      ),
+      floatingActionButton: DraggableFab(
+        child: FloatingActionButton(
+          onPressed: () async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.setString('email', '');
+
+            Navigator.pushNamed(context, 'login');
+          },
+          child: Icon(Icons.logout),
+        ),
       ),
     );
   }

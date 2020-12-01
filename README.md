@@ -5,7 +5,7 @@
 #### What we tried to solve?
 
 * We have tried to solve the problem of Centralized Authority Involved in conduction of Election.
-
+---
 ### Solution Description
 
 * Our approach to solve the problem of centralized system was to create a channel based blockchain, where every log of the user is added to the blockchain.
@@ -13,11 +13,11 @@
 * This chain helps to go back and check the malpractice with the data, as any single change in the block will change the hash value of block leading to breakage in the chain.
 * This method helps us to remove a central power and just keep the moderator to the network.
 * Every Block is uploaded to IPFS Network which can be checked at any time by anyone, but also maitaining the privacy and dignity of the system.
-
+---
 #### Architecture Diagram
 
 ![Architecture](res/Architecture.png?raw=true "Architecture")
-
+---
 #### Technical Description
 
 An overview of:
@@ -28,12 +28,11 @@ An overview of:
   4) MongoDB (Database)
   5) Flutter (Front end)
 
-* Setup/Installations required to run the solution
-
 * You just need to install the APK in your Android Phone to run the solution.
+---
 ### Screenshots
 Affix the relevant screenshots of the developed project here.
-
+---
 ### Team Members
 List of team member names and email IDs with their contributions.
 |Member Name|Email|Contribution|
@@ -41,7 +40,7 @@ List of team member names and email IDs with their contributions.
 |Jay Kumar |jaikumar.saganjel@gmail.com|UI, Frontend|
 |Suraj Kumar Ojha|kumarsurajojha6012001@gmail.com |UI , Frontend|
 |Rishabh |rishabh12536@gmail.com|Blockchain, API, Database|
-
+---
 ### References
 
 #### API Used :

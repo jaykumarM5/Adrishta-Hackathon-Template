@@ -16,7 +16,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'admin',
+      initialRoute: 'history',
       routes: {
         'login': (context) => LoginPage(),
         'nav': (context) => Navigate(),

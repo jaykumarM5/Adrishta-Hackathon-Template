@@ -7,25 +7,38 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> listofCandidate = [];
-  List data = [
+  List data = [ // get the list here from the api
     // Fetch the candidate list here
-    {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},
+    {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},      // logolink will be the link of leader's photo
     {"name": "Jay Kumar", "logolink": "LOGO"},
     {"name": "Rishabh", "logolink": "LOGO"},
     {"name": "Abhishek", "logolink": "LOGO"},
     {"name": "Adi", "logolink": "LOGO"}
   ];
-  List getData(size) {
+  List getData(size) {   // change the return type to future when getting data using http
+    bool isPressed = true;
     for (int i = 0; i < data.length; i++) {
+      if (i % 2 == 0) {          // if else block is used to provide different color of 2 consecutive
+        setState(() {             // rows
+          isPressed = true;
+        });
+      } else {
+        setState(() {
+          isPressed = false;
+        });
+      }
       listofCandidate.add(
-        InkWell(
-            onTap: () {},
-            child: Card(
+        new RaisedButton(
+            onPressed: () => {print(isPressed)},  // if the button is pressed the color of the button changes
+            // color:  ? Colors.green : Colors.white,  // for 2 sec and then the it will be navigated to polls page
+            child: Card(  // where stats of ongoing election will be displayed on real time
               elevation: 10,
               shadowColor: Colors.black,
+              // color: Colors.red,
+              color: isPressed ? Colors.green[600] : Colors.green[100],
               child: Container(
                 height: size.height * 0.12,
-                width: size.width * 0.90,
+                width: size.width * 0.95,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -33,21 +46,18 @@ class _HomePageState extends State<HomePage> {
                       width: 0,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 1.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.orange,
-                          minRadius: size.width * 0.15,
-                          maxRadius: size.width * 0.15,
-                          child: Text(
-                            '${data[i]["logolink"]}',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 22,
-                                fontFamily: 'Piedra',
-                                fontWeight: FontWeight.bold),
-                          ),
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.orange,
+                        minRadius: size.width * 0.15,
+                        maxRadius: size.width * 0.15,
+                        child: Text(
+                          '${data[i]["logolink"]}',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 22,
+                              fontFamily: 'Piedra',
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -78,12 +88,14 @@ class _HomePageState extends State<HomePage> {
 
   initState() {
     super.initState();
+    getData(Size(360.0, 640.0)); // get this size by router navigation
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    getData(size);
+    print(size);
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -123,19 +135,18 @@ class _HomePageState extends State<HomePage> {
               child: flag
                   ? Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Container(
                           child: Card(
                             elevation: 10,
                             shadowColor: Colors.purple,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: listofCandidate),
-                            ),
+                                padding: const EdgeInsets.all(0.0),
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: listofCandidate)),
                           ),
                         ),
                       ),

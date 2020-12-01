@@ -1,3 +1,6 @@
+// Stats will we shown when user vote to any candidate otherwise it will not be visible
+
+
 import 'package:flutter/material.dart';
 
 class PollsPage extends StatefulWidget {

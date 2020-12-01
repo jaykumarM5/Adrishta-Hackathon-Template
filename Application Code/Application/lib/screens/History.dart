@@ -55,7 +55,6 @@ class _HistoryState extends State<History> {
         }
       }
       if (listOfEvents.length == 0) {
-        print('This is Else');
         listOfEvents.add(
           Card(
             margin: EdgeInsets.all(10.0),

@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
       SystemUiOverlayStyle(
           // statusBarColor: Color(0xFF5200FF),
           statusBarIconBrightness: Brightness.dark,
-          systemNavigationBarColor: Colors.greenAccent[400],
+          systemNavigationBarColor: Colors.orange,
           systemNavigationBarIconBrightness: Brightness.light),
     );
     Size size = MediaQuery.of(context).size;

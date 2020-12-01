@@ -3,7 +3,7 @@ import 'package:i_voted/screens/AboutPage.dart';
 import 'screens/HomePage.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:i_voted/screens/History.dart';
-import 'package:i_voted/screens/HomePage.dart';
+import 'package:i_voted/screens/VoteButton.dart';
 import 'package:draggable_fab/draggable_fab.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,14 +13,14 @@ class Navigate extends StatefulWidget {
 }
 
 class _NavigateState extends State<Navigate> {
-  PageController _myPage = PageController(initialPage: 0);
-  int currentIndex = 0;
+  PageController _myPage = PageController(initialPage: 1);
+  int currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         elevation: 20,
         color: Colors.orange,
@@ -46,9 +46,15 @@ class _NavigateState extends State<Navigate> {
                   });
                 },
                 iconSize: currentIndex == 0 ? 35 : 25.0,
-                padding: EdgeInsets.only(left: 20.0, right: 10),
-                icon: Icon(FlutterIcons.home_ant,
-                    color: currentIndex == 0 ? Colors.white : Colors.orange),
+                padding: EdgeInsets.only(right: 10.0, left: 30),
+                icon: Icon(
+                  Icons.history,
+                  color:
+                      currentIndex == 0 ? Colors.white : Colors.deepOrange[600],
+                ),
+              ),
+              SizedBox(
+                width: size.width * 0.1,
               ),
               IconButton(
                 onPressed: () {
@@ -59,12 +65,13 @@ class _NavigateState extends State<Navigate> {
                   });
                 },
                 iconSize: currentIndex == 1 ? 35 : 25.0,
-                padding: EdgeInsets.only(right: 20.0, left: 10),
-                icon: Icon(
-                  Icons.history,
-                  color: currentIndex == 1 ? Colors.white : Colors.orange,
-                ),
+                padding: EdgeInsets.only(left: 10.0, right: 10),
+                icon: Icon(FlutterIcons.home_ant,
+                    color: currentIndex == 1
+                        ? Colors.white
+                        : Colors.deepOrange[600]),
               ),
+
               SizedBox(
                 width: size.width * 0.1,
               ),
@@ -77,9 +84,11 @@ class _NavigateState extends State<Navigate> {
                   });
                 },
                 iconSize: currentIndex == 2 ? 35 : 25.0,
-                padding: EdgeInsets.only(left: 20.0, right: 10),
-                icon: Icon(Icons.video_collection,
-                    color: currentIndex == 2 ? Colors.white : Colors.orange),
+                padding: EdgeInsets.only(left: 10.0, right: 20),
+                icon: Icon(Icons.help,
+                    color: currentIndex == 2
+                        ? Colors.white
+                        : Colors.deepOrange[600]),
               ),
               // IconButton(
               //   onPressed: () {
@@ -106,12 +115,14 @@ class _NavigateState extends State<Navigate> {
             currentIndex = index;
           });
         },
-        children: [HomePage(), History(), About()],
+        children: [History(), VoteButton(), About()],
         // physics: NeverScrollableScrollPhysics(),
         physics: BouncingScrollPhysics(),
       ),
       floatingActionButton: DraggableFab(
         child: FloatingActionButton(
+          heroTag: false,
+          backgroundColor: Colors.deepOrange[600],
           onPressed: () async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
             prefs.setString('email', '');

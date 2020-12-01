@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:i_voted/Data.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
+  HomePage({this.id});
+  final String id;
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   List<Widget> listofCandidate = [];
-  List data = [ // get the list here from the api
-    // Fetch the candidate list here
-    {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},      // logolink will be the link of leader's photo
-    {"name": "Jay Kumar", "logolink": "LOGO"},
-    {"name": "Rishabh", "logolink": "LOGO"},
-    {"name": "Abhishek", "logolink": "LOGO"},
-    {"name": "Adi", "logolink": "LOGO"}
-  ];
-  List getData(size) {   // change the return type to future when getting data using http
+  var data; // for storing fetched data
+  Future<List> getData(size) async {
+    // change the return type to future when getting data using http
+    try {
+      var response = await http.get(candidateListUrl + widget.id);
+      print(response.body);
+      data = json.decode(response.body);
+    } catch (e) {
+      print(e);
+    }
     bool isPressed = true;
     for (int i = 0; i < data.length; i++) {
-      if (i % 2 == 0) {          // if else block is used to provide different color of 2 consecutive
-        setState(() {             // rows
+      if (i % 2 == 0) {
+        // if else block is used to provide different color of 2 consecutive
+        setState(() {
+          // rows
           isPressed = true;
         });
       } else {
@@ -28,55 +37,49 @@ class _HomePageState extends State<HomePage> {
         });
       }
       listofCandidate.add(
-        new RaisedButton(
-            onPressed: () => {print(isPressed)},  // if the button is pressed the color of the button changes
+        RaisedButton(
+            onPressed: () {
+              print(isPressed);
+              vote(email, data[i]["name"]);
+              Fluttertoast.showToast(msg: 'Done');
+            }, // if the button is pressed the color of the button changes
             // color:  ? Colors.green : Colors.white,  // for 2 sec and then the it will be navigated to polls page
-            child: Card(  // where stats of ongoing election will be displayed on real time
+            child: Card(
+              // where stats of ongoing election will be displayed on real time
               elevation: 10,
               shadowColor: Colors.black,
               // color: Colors.red,
-              color: isPressed ? Colors.green[600] : Colors.green[100],
-              child: Container(
-                height: size.height * 0.12,
-                width: size.width * 0.95,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      width: 0,
+              color: isPressed ? Colors.white : Colors.green[100],
+              child: Card(
+                child: ListTile(
+                  tileColor: isPressed ? Colors.white : Colors.green[100],
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    minRadius: size.width * 0.15,
+                    maxRadius: size.width * 0.15,
+                    child: Text(
+                      'V',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'Piedra',
+                          fontWeight: FontWeight.bold),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.orange,
-                        minRadius: size.width * 0.15,
-                        maxRadius: size.width * 0.15,
-                        child: Text(
-                          '${data[i]["logolink"]}',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22,
-                              fontFamily: 'Piedra',
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Text(
-                          '${data[i]["name"]}',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontFamily: 'Piedra'),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 0,
-                    )
-                  ],
+                  ),
+                  trailing: Text(
+                    '${data[i]["bio"]}',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: 'Piedra'),
+                  ),
+                  title: Text(
+                    '${data[i]["name"]}',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontFamily: 'Piedra'),
+                  ),
                 ),
               ),
             )),

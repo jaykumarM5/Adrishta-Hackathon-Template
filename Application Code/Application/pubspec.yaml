@@ -39,6 +39,8 @@ dependencies:
   rflutter_alert: ^1.1.0
   flutter_icons: ^1.1.0
   draggable_fab: ^0.1.1
+  auro_avatar: "^0.1.0"
+  fluttertoast: ^7.1.5
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +60,11 @@ flutter:
   assets:
     - assets/otp.flr
     - assets/verify.png
+    - assets/images/pic3.jpg
+    - assets/images/pic4.jpg
+    - assets/images/pic5.jpg
+    - assets/images/icon_pic.png
+    - assets/images/instagram.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -7,7 +7,9 @@ import 'package:i_voted/Navigate.dart';
 import 'package:i_voted/screens/AboutPage.dart';
 import 'package:i_voted/screens/Splash.dart';
 import 'package:i_voted/screens/AdminPage.dart';
+import 'package:i_voted/screens/ElectionDisplayUser.dart';
 import 'Data.dart';
+import 'package:i_voted/screens/ElectionDisplay.dart';
 
 // Main Page from where the application starts executing
 
@@ -15,8 +17,10 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'history',
+      initialRoute: 'splash',
       routes: {
+        'electionUser': (context) => ElectionDisplayUser(),
+        'electiondisplay': (context) => ElectionDisplay(),
         'login': (context) => LoginPage(),
         'nav': (context) => Navigate(),
         'about': (context) => About(),
@@ -24,7 +28,6 @@ void main() {
         'history': (context) => History(),
         'home': (context) => HomePage(),
         'otp': (context) => OTPPage(email, otp),
-        'admin': (context) => AdminPage(),
       },
     ),
   );

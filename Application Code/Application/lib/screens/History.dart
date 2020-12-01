@@ -42,7 +42,7 @@ class History extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Admin',
+                'History',
                 style: TextStyle(
                     fontSize: 23.0,
                     fontWeight: FontWeight.bold,

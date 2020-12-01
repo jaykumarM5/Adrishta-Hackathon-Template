@@ -18,7 +18,8 @@ export default (req, res) => {
       year: new Date().getFullYear(),
       bio: parsedBody.bio,
       name: parsedBody.name,
-      votes:0
+      votes:0,
+      eventid : parsedBody.eventid
     };
 
     console.log(myobj);

@@ -6,7 +6,7 @@ export default async (req, res) => {
     if (err) throw err;
     var dbo = db.db("iVoted");
     
-    var myquery = { cadid: req.query.cadid };
+    var myquery = { cadid: req.query.cadid, eventid: req.query.eventid };
     dbo.collection("candidates").deleteOne(myquery, function(err, obj) {
       if (err) throw err;
       console.log("1 document deleted");

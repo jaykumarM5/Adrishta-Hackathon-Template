@@ -31,7 +31,22 @@ An overview of:
 * You just need to install the APK in your Android Phone to run the solution.
 ---
 ### Screenshots
-Affix the relevant screenshots of the developed project here.
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/1.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/2.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/3.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/4.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/5.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/6.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/7.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/8.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/9.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/10.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/11.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/12.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/13.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/14.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/15.jpg?raw=true "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/16.jpg?raw=true "Screenshot")
 ---
 ### Team Members
 List of team member names and email IDs with their contributions.

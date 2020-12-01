@@ -16,7 +16,7 @@
 ---
 #### Architecture Diagram
 
-![Architecture](res/Architecture.png?raw=true "Architecture")
+![Architecture](https://raw.githubusercontent.com/jaykumarM5/Adrishta-Hackathon-Template/master/res/Architecture.png?raw=true "Architecture")
 ---
 #### Technical Description
 

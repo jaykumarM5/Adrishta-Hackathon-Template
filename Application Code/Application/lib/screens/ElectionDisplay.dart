@@ -17,7 +17,7 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
   var regNo = 201800080;
   Future buildCards(search) async {
     List<Card> listOfBooks = [];
-    String url = 'https://smit-libms-server.herokuapp.com/e_books/searchTab';
+    String url = '';
     var data;
     try {
       var response = await http.post(url,

@@ -15,6 +15,7 @@ export default async (req, res) => {
       if (err) throw err;
       console.log("1 document inserted");
     });
+    db.close();
   });
   res.json({ status: "updated" });
 };

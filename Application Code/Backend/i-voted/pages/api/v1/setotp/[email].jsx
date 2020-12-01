@@ -1,3 +1,6 @@
+const MongoClient = require("mongodb").MongoClient;
+var uri = process.env.MONGO_SERVER;
+
 export default function SendOtp(req, res) {
   var otpVal = Math.floor(100000 + Math.random() * 100000 + 1);
   var email = req.query.email;
@@ -42,17 +45,36 @@ export default function SendOtp(req, res) {
       '"}',
   };
 
-  fetch(url, options)
-    .then((res) => res.json())
-    .then((json) =>
-      res.json({
-        query: json,
-        otp: otpVal,
-      })
-    )
-    .catch((err) =>
-      res.json({
-        query: err,
-      })
-    );
+  MongoClient.connect(uri, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("iVoted");
+    dbo
+      .collection("admins")
+      .find({ email: req.query.email })
+      .toArray(function (err, result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+        var role;
+        if (result.length == 0) {
+          role = "student";
+        } else {
+          role = "admin";
+        }
+        fetch(url, options)
+          .then((res) => res.json())
+          .then((json) =>
+            res.json({
+              query: json,
+              otp: otpVal,
+              role: role,
+            })
+          )
+          .catch((err) =>
+            res.json({
+              query: err,
+            })
+          );
+      });
+  });
 }

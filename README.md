@@ -26,6 +26,7 @@ An overview of:
   2) Vercel (Deployments)
   3) IPFS (For uploading Blocks)
   4) MongoDB (Database)
+  5) Flutter (Front end)
 
 * Setup/Installations required to run the solution
 
@@ -37,8 +38,8 @@ Affix the relevant screenshots of the developed project here.
 List of team member names and email IDs with their contributions.
 |Member Name|Email|Contribution|
 |-----------|-----|------------|
-|Member 1|mem1@example.com|Something important|
-|Member 2|mem2@example.com|Something important|
+|Jay Kumar |jaikumar.saganjel@gmail.com|UI, Frontend|
+|Suraj Kumar Ojha|kumarsurajojha6012001@gmail.com |UI , Frontend|
 |Rishabh |rishabh12536@gmail.com|Blockchain, API, Database|
 
 ### References

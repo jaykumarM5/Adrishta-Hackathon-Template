@@ -1,3 +1,6 @@
+
+// photo of the winning candidate will be stacked on the top of radial graph
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,7 +9,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class History extends StatelessWidget {
-  final List<ChartData> chartData = [
+  final List<ChartData> chartData = [ // get the data through the api
     ChartData('David', 25),
     ChartData('Steve', 38),
     ChartData('Jack', 34),
@@ -17,8 +20,8 @@ class History extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Center(
-            child: Stack(
-          children: [
+            child: Stack(  //Stack is used for stacking up the profile pic 
+          children: [  // of the candidate and radial graph.
             FlipCard(
               direction: FlipDirection.HORIZONTAL,
               front: Center(

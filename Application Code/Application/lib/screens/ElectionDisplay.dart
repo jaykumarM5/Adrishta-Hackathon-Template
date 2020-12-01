@@ -15,6 +15,7 @@ class ElectionDisplay extends StatefulWidget {
 class _ElectionDisplayState extends State<ElectionDisplay> {
 // Start
   var regNo = 201800080;
+  bool color;
   Future buildCards(search) async {
     List<Card> listOfBooks = [];
     String url = '';
@@ -32,34 +33,44 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
       if (data != null) {
         print('This is Inside if');
         for (int i = 0; i < data.length; i++) {
+          if (i % 2 == 0) {
+            setState(() {
+              color = true;
+            });
+          } else {
+            setState(() {
+              color = false;
+            });
+          }
           listOfBooks.add(
             Card(
-              color: Color(0xFF0000FF),
+              color: color ? Colors.orange[400] : Colors.orange[200],
               elevation: 20.0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  ListTile(
-                    leading: Text(
-                      '${data[i]["book_name"]}',
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+              child: Container(
+                height: 100,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: 20.0,
                     ),
-                  ),
-                  Text(
-                    '${data[i]["department"]}',
-                    style: TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                ],
+                    Center(
+                      child: Text(
+                        '${data[i]["book_name"]}',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(child: Text('tap to see result')),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -112,17 +123,22 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
               margin: EdgeInsets.only(left: 10.0, right: 10.0),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Color(0x550000FF),
-                        blurRadius: 5.0,
-                        spreadRadius: 1.0,
-                        offset: Offset(2, 2))
-                  ],
-                  borderRadius: BorderRadius.circular(30.0)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[300],
+                    blurRadius: 5.0,
+                    spreadRadius: 1.0,
+                    offset: Offset(2, 2),
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                ),
+              ),
               child: Text(
-                'Searched for : ${widget.search}',
+                'Home',
                 style: TextStyle(
                     fontSize: 23.0,
                     fontWeight: FontWeight.bold,
@@ -145,7 +161,31 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
                   return Center(child: CircularProgressIndicator());
                 },
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      heroTag: false,
+                      backgroundColor: Colors.orange[700],
+                      child: Icon(Icons.logout),
+                    ),
+                  ),
+                  Container(
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: Colors.orange[700],
+                      child: Icon(Icons.add),
+                      heroTag: false,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ]),
         ),
       ),

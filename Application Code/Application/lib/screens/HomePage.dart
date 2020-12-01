@@ -7,19 +7,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> listofCandidate = [];
-  List data = [
+  List data = [ // get the list here from the api
     // Fetch the candidate list here
-    {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},
+    {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},      // logolink will be the link of leader's photo
     {"name": "Jay Kumar", "logolink": "LOGO"},
     {"name": "Rishabh", "logolink": "LOGO"},
     {"name": "Abhishek", "logolink": "LOGO"},
     {"name": "Adi", "logolink": "LOGO"}
   ];
-  List getData(size) {
+  List getData(size) {   // change the return type to future when getting data using http
     bool isPressed = true;
     for (int i = 0; i < data.length; i++) {
-      if (i % 2 == 0) {
-        setState(() {
+      if (i % 2 == 0) {          // if else block is used to provide different color of 2 consecutive
+        setState(() {             // rows
           isPressed = true;
         });
       } else {

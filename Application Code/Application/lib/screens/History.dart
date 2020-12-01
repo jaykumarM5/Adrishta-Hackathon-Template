@@ -95,7 +95,7 @@ class _HistoryState extends State<History> {
     ));
   }
 }
-
+// for radialgraph
 class ChartData {
   ChartData(this.x, this.y, [this.color]);
   final String x;

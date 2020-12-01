@@ -4,15 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:i_voted/Data.dart';
 import 'package:i_voted/screens/AdminPage.dart';
+import 'package:i_voted/screens/HomePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class ElectionDisplay extends StatefulWidget {
+class ElectionDisplayUser extends StatefulWidget {
   @override
-  _ElectionDisplayState createState() => _ElectionDisplayState();
+  _ElectionDisplayUserState createState() => _ElectionDisplayUserState();
 }
 
-class _ElectionDisplayState extends State<ElectionDisplay> {
+class _ElectionDisplayUserState extends State<ElectionDisplayUser> {
 // Start
   bool color;
   Future buildCards() async {
@@ -44,7 +45,7 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AdminPage(id: data[i]["_id"]),
+                    builder: (context) => HomePage(id: data[i]["_id"]),
                   ),
                 );
               },
@@ -111,10 +112,6 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
 
   bool isSpin;
 
-  String title = '';
-  String fromDate = '';
-  String toDate = '';
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -170,104 +167,6 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
                   }
                   return Center(child: CircularProgressIndicator());
                 },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: FloatingActionButton(
-                      onPressed: () async {
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.setString('email', '');
-                        prefs.setString('email', '');
-                        Navigator.pushNamed(context, 'login');
-                      },
-                      heroTag: false,
-                      backgroundColor: Colors.orange[700],
-                      child: Icon(Icons.logout),
-                    ),
-                  ),
-                  Container(
-                    child: FloatingActionButton(
-                      onPressed: () {
-                        Alert(
-                          context: context,
-                          title: 'Add Election',
-                          content: Column(
-                            children: [
-                              TextField(
-                                onChanged: (value) {
-                                  title = value;
-                                },
-                                decoration: InputDecoration(
-                                  icon: Icon(
-                                    Icons.title,
-                                    color: Colors.orange,
-                                  ),
-                                  hintText: 'Election Title',
-                                ),
-                              ),
-                              TextField(
-                                onChanged: (value) {
-                                  fromDate = value;
-                                },
-                                decoration: InputDecoration(
-                                  icon: Icon(
-                                    Icons.date_range,
-                                    color: Colors.orange,
-                                  ),
-                                  labelText: 'From Date',
-                                  hintText: 'YYYY/MM/DD',
-                                  labelStyle: TextStyle(
-                                      color: Colors.grey, fontSize: 15),
-                                ),
-                              ),
-                              TextField(
-                                onChanged: (value) {
-                                  toDate = value;
-                                },
-                                decoration: InputDecoration(
-                                  icon: Icon(
-                                    Icons.date_range,
-                                    color: Colors.orange,
-                                  ),
-                                  labelText: 'To Date',
-                                  hintText: 'YY/MM/DD',
-                                  labelStyle: TextStyle(
-                                      color: Colors.grey, fontSize: 15),
-                                ),
-                              ),
-                            ],
-                          ),
-                          buttons: [
-                            DialogButton(
-                              color: Colors.orange,
-                              child: Text('Confirm'),
-                              onPressed: () async {
-                                print(title);
-                                print(fromDate);
-                                print(toDate);
-                                if (title != '' &&
-                                    fromDate != '' &&
-                                    toDate != '') {
-                                  await addElection(title, fromDate, toDate);
-                                  Navigator.pop(context);
-                                }
-                              },
-                            ),
-                          ],
-                        ).show();
-                      },
-                      backgroundColor: Colors.orange[700],
-                      child: Icon(Icons.add),
-                      heroTag: true,
-                    ),
-                  )
-                ],
               ),
             ),
           ]),

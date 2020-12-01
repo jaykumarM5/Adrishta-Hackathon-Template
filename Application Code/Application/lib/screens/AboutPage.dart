@@ -23,16 +23,21 @@ class About extends StatelessWidget {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                      color: Color(0x550000FF),
-                      blurRadius: 5.0,
-                      spreadRadius: 1.0,
-                      offset: Offset(2, 2))
+                    color: Colors.grey[300],
+                    blurRadius: 5.0,
+                    spreadRadius: 1.0,
+                    offset: Offset(2, 2),
+                  ),
                 ],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                ),
               ),
               child: Text(
                 'Developers',
                 style: TextStyle(
-                    fontSize: 25.0,
+                    fontSize: 23.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),

@@ -10,20 +10,30 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   startTime() async {
+    // fetches if email and role of the user is stores or not ie he is logged in or not
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.get('email') != null ? prefs.get('email') : '';
+    role = prefs.get('role') != null ? prefs.get('role') : '';
     var _duration = Duration(seconds: 2);
     return Timer(_duration, navigationPage);
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(email.isEmpty ? 'login' : 'nav');
+    // if the role of the user is admin then it will redirect the user to the admin page
+    print(role);
+    if (role == 'admin') {
+      Navigator.of(context)
+          .pushReplacementNamed(email.isEmpty ? 'login' : 'electiondisplay');
+    } else {
+      Navigator.of(context)
+          .pushReplacementNamed(email.isEmpty ? 'login' : 'nav');
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    // startTime();
+    startTime();
   }
 
   @override

@@ -1,33 +1,63 @@
 // ask if the user is ready to vote
-// it is only activated when there is ongoing 
-// election and it navigates to the homescreen where 
+// it is only activated when there is ongoing
+// election and it navigates to the homescreen where
 // user will vote
 
-
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:i_voted/Data.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.enable, this.msg}) : super(key: key);
-
-  final bool enable;
-  final String msg;
-
+class VoteButton extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _VoteButtonState createState() => _VoteButtonState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _VoteButtonState extends State<VoteButton> {
+  bool enable = false;
+  String msg = '';
+  bool flag = false;
+
+  @override
+  initState() {
+    super.initState();
+    checkVoter(); // checks if the voter is applicable to vote or not
+  }
+
+  void checkVoter() async {
+    flag = await checkVote();
+    if (flag == null) {
+      flag = true;
+    }
+    setState(() {
+      if (flag) {
+        enable = true;
+        msg = 'You are authorised to vote';
+      } else {
+        msg = 'You can\'t vote';
+      }
+    });
+  }
+
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            enable
+                ? Text(
+                    "Tap to Enter into Election",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22.2,
+                        fontWeight: FontWeight.bold),
+                  )
+                : Text(''),
+            SizedBox(
+              height: size.height * 0.07,
+            ),
             Container(
-              child: widget.enable
+              child: enable
                   ? Ink(
                       decoration: ShapeDecoration(
                         color: Colors.black,
@@ -42,7 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         splashColor: Colors.red[400],
                         padding: EdgeInsets.all(40.0),
                         onPressed: () {
-                          Navigator.pushNamed(context, ''); // router
+                          Navigator.pushNamed(
+                              context, 'electionUser'); // router
                         },
                       ))
                   : Ink(
@@ -56,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(25.0),
             ),
             Text(
-              "${widget.msg}",
+              "$msg",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 22.2,
@@ -91,4 +122,3 @@ class IconsReturn extends StatelessWidget {
     );
   }
 }
-

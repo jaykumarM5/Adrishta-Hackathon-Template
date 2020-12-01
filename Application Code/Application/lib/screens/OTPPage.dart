@@ -23,6 +23,7 @@ class _OTPPageState extends State<OTPPage> {
   void rememberUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('email', email);
+    prefs.setString('role', role);
   }
 
   // for recognising taps
@@ -40,6 +41,7 @@ class _OTPPageState extends State<OTPPage> {
   // acts like constructor of state
   @override
   void initState() {
+    addVoter();
     onTapRecognizer = TapGestureRecognizer()
       ..onTap = () {
         login();

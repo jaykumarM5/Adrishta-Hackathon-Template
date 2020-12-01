@@ -32,23 +32,26 @@ An overview of:
 ---
 ### Screenshots
 
-<img src="res/12.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/11.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/13.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/14.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/16.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/1.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/2.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/3.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/4.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/5.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/6.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/7.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/8.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/9.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/10.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/15.JPG?raw=true" width="150" alt="Screenshots"><br/>
-<img src="res/17.JPG?raw=true" width="150" alt="Screenshots"><br/>
+
+<ul>
+  <li><img src=" src="res/12.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/11.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/13.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/14.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/16.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/1.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/2.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/3.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/4.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/5.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/6.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/7.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/8.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/9.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/10.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/15.JPG?raw=true" width="150" alt="Screenshots"></li>
+<li><img src=" src="res/17.JPG?raw=true" width="150" alt="Screenshots"></li>
+</ul>
 ---
 ### Team Members
 List of team member names and email IDs with their contributions.

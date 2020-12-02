@@ -1,9 +1,12 @@
-## Team Number \ Team 16 \ I-Voted
+## Team Number \ Team 16 \ I-Voted - A DAPP Approach
 
 ### Project Overview
 
+**I-Voted** is a **Decentralized approach** to make a Electiion portal
+
 #### What we tried to solve?
 
+* We have tried to solve the problem of making secure Election Portal for College.
 * We have tried to solve the problem of Centralized Authority Involved in conduction of Election.
 ---
 ### Solution Description

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i_voted/screens/History.dart';
-import 'package:i_voted/screens/HomePage.dart';
+import 'package:i_voted/screens/CandidateList.dart';
 import 'package:i_voted/screens/Login.dart';
 import 'package:i_voted/screens/OTPPage.dart';
 import 'package:i_voted/Navigate.dart';
@@ -17,7 +17,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'history',
+      initialRoute: 'splash',
       routes: {
         'electionUser': (context) => ElectionDisplayUser(),
         'electiondisplay': (context) => ElectionDisplay(),
@@ -26,7 +26,7 @@ void main() {
         'about': (context) => About(),
         'splash': (context) => Splash(),
         'history': (context) => History(),
-        'home': (context) => HomePage(),
+        'home': (context) => CandidateList(),
         'otp': (context) => OTPPage(),
       },
     ),

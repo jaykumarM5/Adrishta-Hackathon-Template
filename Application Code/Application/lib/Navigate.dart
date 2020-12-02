@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i_voted/screens/AboutPage.dart';
-import 'screens/HomePage.dart';
+import 'screens/CandidateList.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:i_voted/screens/History.dart';
 import 'package:i_voted/screens/VoteButton.dart';

@@ -28,7 +28,7 @@ String eventAddUrl = 'https://i-voted.vercel.app/api/v1/blockchain/events/add';
 String candidateListUrl =
     'https://i-voted.vercel.app/api/v1/blockchain/listCandidate/';
 
-String voteUrl1 = 'https://i-voted.vercel.app/api/v1/blockchain/voteHIstory/';
+String voteUrl1 = 'https://i-voted.vercel.app/api/v1/blockchain/votingCount/';
 
 String voteUrl2 = 'https://i-voted.vercel.app/api/v1/blockchain/voteHIstory/';
 

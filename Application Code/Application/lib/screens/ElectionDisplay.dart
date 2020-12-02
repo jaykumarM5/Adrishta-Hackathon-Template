@@ -24,7 +24,6 @@ class _ElectionDisplayState extends State<ElectionDisplay> {
         print('Error');
       } else {
         data = jsonDecode(response.body);
-        print(data);
       }
       if (data != null) {
         print('This is Inside if');

@@ -4,24 +4,17 @@ import 'dart:convert';
 import 'package:i_voted/Data.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({this.id});
+class CandidateList extends StatefulWidget {
+  CandidateList({this.id});
   final String id;
   @override
-  _HomePageState createState() => _HomePageState();
+  _CandidateListState createState() => _CandidateListState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CandidateListState extends State<CandidateList> {
   List<Widget> listofCandidate = [];
   var data; // for storing fetched data
-  // List data = [ // get the list here from the api
-  //   // Fetch the candidate list here
-  //   {"name": "Suraj Kumar Ojha", "logolink": "LOGO"},      // logolink will be the link of leader's photo
-  //   {"name": "Jay Kumar", "logolink": "LOGO"},
-  //   {"name": "Rishabh", "logolink": "LOGO"},
-  //   {"name": "Abhishek", "logolink": "LOGO"},
-  //   {"name": "Adi", "logolink": "LOGO"}
-  // ];
+
   Future<List> getData(size) async {
     // change the return type to future when getting data using http
     try {
@@ -48,7 +41,7 @@ class _HomePageState extends State<HomePage> {
       listofCandidate.add(
         RaisedButton(
             onPressed: () {
-              vote(email, data[i]["name"]);
+              vote(email, data[i]["cadid"]);
               Fluttertoast.showToast(msg: 'Done');
             }, // if the button is pressed the color of the button changes
             // color:  ? Colors.green : Colors.white,  // for 2 sec and then the it will be navigated to polls page

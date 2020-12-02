@@ -18,15 +18,13 @@ class Lists extends StatefulWidget {
 
 class _ListsState extends State<Lists> {
 // Start
-  Future buildCards(size) async {
+  Future<List<Widget>> buildCards(size) async {
     List<Widget> listOfUsers = []; //for storing users
 
     var data;
     try {
       try {
         var response = await http.get(candidateListUrl + widget.id);
-        print(response.body);
-        print('Candidate List');
         data = json.decode(response.body);
       } catch (e) {
         print(e);
@@ -77,7 +75,6 @@ class _ListsState extends State<Lists> {
         );
       }
       if (listOfUsers.length == 0) {
-        print('This is Else');
         listOfUsers.add(
           Card(
             margin: EdgeInsets.all(10.0),

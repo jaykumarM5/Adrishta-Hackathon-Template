@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:i_voted/Data.dart';
-import 'package:i_voted/screens/AdminPage.dart';
-import 'package:i_voted/screens/HomePage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:i_voted/screens/CandidateList.dart';
 
 class ElectionDisplayUser extends StatefulWidget {
   @override
@@ -45,7 +42,7 @@ class _ElectionDisplayUserState extends State<ElectionDisplayUser> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(id: data[i]["_id"]),
+                    builder: (context) => CandidateList(id: data[i]["_id"]),
                   ),
                 );
               },

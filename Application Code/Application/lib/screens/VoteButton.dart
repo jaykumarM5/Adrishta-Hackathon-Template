@@ -21,21 +21,23 @@ class _VoteButtonState extends State<VoteButton> {
     if (flag == null) {
       flag = true;
     }
-    setState(() {
-      print(flag.toString());
-      if (flag) {
-        enable = true;
-        msg = 'You are authorised to vote';
-      } else {
-        msg = 'You can\'t vote';
-      }
-    });
+    if (this.mounted) {
+      setState(() {
+        print(flag.toString());
+        if (flag) {
+          enable = true;
+          msg = 'You are authorised to vote';
+        } else {
+          msg = 'You can\'t vote';
+        }
+      });
+    }
   }
 
   @override
   initState() {
-    super.initState();
     checkVoter();
+    super.initState();
     // checks if the voter is applicable to vote or not
   }
 

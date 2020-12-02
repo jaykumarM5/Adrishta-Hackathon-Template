@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:i_voted/Data.dart';
+import 'package:i_voted/screens/Result.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:draggable_fab/draggable_fab.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +16,7 @@ class AdminPage extends StatefulWidget {
 class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
+    print('id : ' + widget.id);
     print(widget.id);
     Size size = MediaQuery.of(context).size;
     return SafeArea(
@@ -128,6 +130,45 @@ class _AdminPageState extends State<AdminPage> {
                             MaterialPageRoute(
                               builder: (context) => Lists(
                                 title: 'List of Candidates',
+                                id: widget.id,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      FlatButton(
+                        padding: EdgeInsets.all(0),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.deepOrange[50],
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              topRight: Radius.circular(30),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey[300], //Color(0x550000FF),
+                                blurRadius: 5.0,
+                                spreadRadius: 1.0,
+                                offset: Offset(2, 2),
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            'Result',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Result(
                                 id: widget.id,
                               ),
                             ),

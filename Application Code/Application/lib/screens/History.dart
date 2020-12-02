@@ -15,57 +15,58 @@ class _HistoryState extends State<History> {
     try {
       var response = await http.get(eventsUrl);
       var data = json.decode(response.body);
+      print('Event length : ' + data.length.toString());
       for (int i = 0; i < data.length; i++) {
         try {
-          var response = await http.get(
+          var response1 = await http.get(
               'https://i-voted.vercel.app/api/v1/blockchain/listCandidate/' +
                   data[i]["_id"]);
-          var dataEvent = jsonDecode(response.body);
+          var dataEvent = jsonDecode(response1.body);
           if (dataEvent != null) {
             int sumOfVotes = 0;
             List<ChartData> chartData = [];
-            for (int i = 0; i < dataEvent.length; i++) {
-              sumOfVotes += dataEvent[i]["votes"];
+            for (int j = 0; j < dataEvent.length; j++) {
+              sumOfVotes += dataEvent[j]["votes"];
             }
-            for (int i = 0; i < dataEvent.length; i++) {
+            for (int j = 0; j < dataEvent.length; j++) {
               chartData.add(
                 ChartData(
-                  dataEvent[i]["name"],
+                  dataEvent[j]["name"],
                   double.parse(
-                    (dataEvent[i]["votes"] * 100 / sumOfVotes)
+                    (dataEvent[j]["votes"] * 100 / sumOfVotes)
                         .toStringAsFixed(2),
                   ),
                 ),
               );
-              listOfEvents.add(
-                Card(
-                  elevation: 20,
-                  color: Colors.orange,
-                  child: SfCircularChart(
-                      title: ChartTitle(
-                        text: data[i]["event"],
-                      ),
-                      // for Displaying the radial bar
-                      legend: Legend(
-                        isVisible: true,
-                      ),
-                      series: <CircularSeries>[
-                        // Renders radial bar chart
-                        RadialBarSeries<ChartData, String>(
-                          dataSource: chartData,
-                          xValueMapper: (ChartData data, _) => data.x,
-                          yValueMapper: (ChartData data, _) => data.y,
-                          radius: "75%",
-                          dataLabelSettings: DataLabelSettings(
-                              // Renders the data label
-                              isVisible: true),
-                          enableSmartLabels: true,
-                          enableTooltip: true,
-                        ),
-                      ]),
-                ),
-              );
             }
+            listOfEvents.add(
+              Card(
+                elevation: 20,
+                color: Colors.orange,
+                child: SfCircularChart(
+                    title: ChartTitle(
+                      text: data[i]["event"],
+                    ),
+                    // for Displaying the radial bar
+                    legend: Legend(
+                      isVisible: true,
+                    ),
+                    series: <CircularSeries>[
+                      // Renders radial bar chart
+                      RadialBarSeries<ChartData, String>(
+                        dataSource: chartData,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        radius: "75%",
+                        dataLabelSettings: DataLabelSettings(
+                            // Renders the data label
+                            isVisible: true),
+                        enableSmartLabels: true,
+                        enableTooltip: true,
+                      ),
+                    ]),
+              ),
+            );
           }
         } catch (e) {
           print(e);

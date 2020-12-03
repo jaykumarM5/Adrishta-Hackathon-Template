@@ -222,8 +222,4 @@ export default async function main(req, res) {
   });
 }
 
-async function AddToIPFS(cntnt) {
-  var Qmhash = await ipfs.add(cntnt);
 
-  return Qmhash;
-}

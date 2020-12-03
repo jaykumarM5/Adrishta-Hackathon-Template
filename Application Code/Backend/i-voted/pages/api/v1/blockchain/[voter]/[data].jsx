@@ -85,7 +85,6 @@ export default async function main(req, res) {
                     .updateOne(myquery, myobj, function (err, res) {
                       if (err) throw err;
                       console.log("1 document updated");
-                      db.close();
                     });
                   res.json({ vrid: file.path, state: "banned" });
                 }
@@ -101,7 +100,6 @@ export default async function main(req, res) {
           } else {
             res.json({ state: "alreadyBanned" });
           }
-          db.close();
         });
 
       console.log(isBanned);

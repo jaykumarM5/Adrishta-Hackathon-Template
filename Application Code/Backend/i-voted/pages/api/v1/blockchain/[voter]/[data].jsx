@@ -12,7 +12,7 @@ export default async function main(req, res) {
   });
   var file;
 
-  MongoClient.connect(url, function (err, db) {
+  MongoClient.connect(url, async function (err, db) {
     if (err) throw err;
     var dbo = db.db("iVoted");
     //check if ban request
@@ -22,14 +22,14 @@ export default async function main(req, res) {
       dbo
         .collection("banVoter")
         .findOne({ voterid: req.query.voter }, function (err, result) {
-          if (err) throw err;
-          console.log(result.name);
-          if (result.length == 0) {
-            isBanned = "no";
-            console.log(isBanned);
-          } else {
+          if (err) {
+            console.log(err);
+          }
+          console.log(result);
+          if (result != null) {
             isBanned = "yes";
             console.log(isBanned);
+          } else {
           }
           if (isBanned == "no") {
             dbo
@@ -45,7 +45,7 @@ export default async function main(req, res) {
                 console.log(lb);
                 if (result.length == 0) {
                   var cntnt =
-                    "{ name :" +
+                    '{ "name" :' +
                     req.query.voter +
                     '", date : "' +
                     new Date() +
@@ -65,7 +65,7 @@ export default async function main(req, res) {
                 } else {
                   lb = result[0].lb;
                   var cntnt =
-                    "{ name :" +
+                    '{ "name" :' +
                     req.query.voter +
                     '", date : "' +
                     new Date() +
@@ -89,7 +89,6 @@ export default async function main(req, res) {
                     });
                   res.json({ vrid: file.path, state: "banned" });
                 }
-                
               });
 
             var myobj = {
@@ -102,8 +101,9 @@ export default async function main(req, res) {
           } else {
             res.json({ state: "alreadyBanned" });
           }
+          db.close();
         });
-        db.close();
+
       console.log(isBanned);
     } else if (req.query.data == "alright") {
       // Check if exist
@@ -117,7 +117,7 @@ export default async function main(req, res) {
           console.log(lb);
           if (result.length == 0) {
             var cntnt =
-              "{ name :" +
+              '{ "name" :' +
               req.query.voter +
               '", date : "' +
               new Date() +
@@ -135,7 +135,7 @@ export default async function main(req, res) {
           } else {
             lb = result[0].lb;
             var cntnt =
-              "{ name :" +
+              '{ "name" :' +
               req.query.voter +
               '", date : "' +
               new Date() +
@@ -175,7 +175,7 @@ export default async function main(req, res) {
           console.log(lb);
           if (result.length == 0) {
             var cntnt =
-              "{ name :" +
+              '{ "name" :' +
               req.query.voter +
               '", date : "' +
               new Date() +
@@ -191,7 +191,7 @@ export default async function main(req, res) {
           } else {
             lb = result[0].lb;
             var cntnt =
-              "{ name :" +
+              '{ "name" :' +
               req.query.voter +
               '", date : "' +
               new Date() +

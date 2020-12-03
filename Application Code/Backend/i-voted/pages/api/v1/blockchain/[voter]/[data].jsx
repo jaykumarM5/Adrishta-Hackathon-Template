@@ -18,67 +18,93 @@ export default async function main(req, res) {
     //check if ban request
 
     if (req.query.data == "ban") {
-      dbo.collection("banVoter").createIndex({ voterid: 1 }, { unique: true });
+      var isBanned = "no";
       dbo
-        .collection("voters")
-        .find({ user: req.query.voter })
-        .toArray(async function (err, result) {
+        .collection("banVoter")
+        .findOne({ voterid: req.query.voter }, function (err, result) {
           if (err) throw err;
-          console.log(result);
-          var lb = "X";
-          console.log(lb);
+          console.log(result.name);
           if (result.length == 0) {
-            var cntnt =
-              "{ name :" +
-              req.query.voter +
-              '", date : "' +
-              new Date() +
-              '", pb : "X", vr :"' +
-              req.query.data +
-              '" }';
-            file = await ipfs.add(cntnt);
-            console.log("Log : Uploaded to IPFS > " + cntnt);
-            var myobj = { user: req.query.voter, lb: file.path };
-            dbo.collection("voters").insertOne(myobj, function (err, res) {
+            isBanned = "no";
+            console.log(isBanned);
+          } else {
+            isBanned = "yes";
+            console.log(isBanned);
+          }
+          if (isBanned == "no") {
+            dbo
+              .collection("banVoter")
+              .createIndex({ voterid: 1 }, { unique: true });
+            dbo
+              .collection("voters")
+              .find({ user: req.query.voter })
+              .toArray(async function (err, result) {
+                if (err) throw err;
+                console.log(result);
+                var lb = "X";
+                console.log(lb);
+                if (result.length == 0) {
+                  var cntnt =
+                    "{ name :" +
+                    req.query.voter +
+                    '", date : "' +
+                    new Date() +
+                    '", pb : "X", vr :"' +
+                    req.query.data +
+                    '" }';
+                  file = await ipfs.add(cntnt);
+                  console.log("Log : Uploaded to IPFS > " + cntnt);
+                  var myobj = { user: req.query.voter, lb: file.path };
+                  dbo
+                    .collection("voters")
+                    .insertOne(myobj, function (err, res) {
+                      if (err) throw err;
+                      console.log("Log : 1 document inserted ");
+                    });
+                  res.json({ vrid: file.path, state: "banned" });
+                } else {
+                  lb = result[0].lb;
+                  var cntnt =
+                    "{ name :" +
+                    req.query.voter +
+                    '", date : "' +
+                    new Date() +
+                    '", pb : "' +
+                    lb +
+                    '", vr :"' +
+                    req.query.data +
+                    '" }';
+                  file = await ipfs.add(cntnt);
+                  var myobj = {
+                    $set: { user: req.query.voter, lb: file.path },
+                  };
+                  var myquery = { user: req.query.voter };
+                  console.log("Log : available");
+                  dbo
+                    .collection("voters")
+                    .updateOne(myquery, myobj, function (err, res) {
+                      if (err) throw err;
+                      console.log("1 document updated");
+                      db.close();
+                    });
+                  res.json({ vrid: file.path, state: "banned" });
+                }
+                
+              });
+
+            var myobj = {
+              voterid: req.query.voter,
+            };
+            dbo.collection("banVoter").insertOne(myobj, function (err, res) {
               if (err) throw err;
               console.log("Log : 1 document inserted ");
             });
-            res.json({ vrid: file.path });
           } else {
-            lb = result[0].lb;
-            var cntnt =
-              "{ name :" +
-              req.query.voter +
-              '", date : "' +
-              new Date() +
-              '", pb : "' +
-              lb +
-              '", vr :"' +
-              req.query.data +
-              '" }';
-            file = await ipfs.add(cntnt);
-            var myobj = { $set: { user: req.query.voter, lb: file.path } };
-            var myquery = { user: req.query.voter };
-            console.log("Log : available");
-            dbo
-              .collection("voters")
-              .updateOne(myquery, myobj, function (err, res) {
-                if (err) throw err;
-                console.log("1 document updated");
-                db.close();
-              });
-            res.json({ vrid: file.path });
+            res.json({ state: "alreadyBanned" });
           }
-          db.close();
         });
-
-      var myobj = {
-        voterid: req.query.voter,
-      };
-      dbo.collection("banVoter").insertOne(myobj, function (err, res) {
-        if (err) throw err;
-        console.log("Log : 1 document inserted ");
-      });
+        db.close();
+      console.log(isBanned);
     } else if (req.query.data == "alright") {
       // Check if exist
       dbo
@@ -134,6 +160,11 @@ export default async function main(req, res) {
           db.close();
         });
     } else if (req.query.data == "revokeban") {
+      var myquery = { voterid: req.query.voter };
+      dbo.collection("banVoter").deleteOne(myquery, function (err, obj) {
+        if (err) throw err;
+        console.log("1 document deleted");
+      });
       dbo
         .collection("voters")
         .find({ user: req.query.voter })

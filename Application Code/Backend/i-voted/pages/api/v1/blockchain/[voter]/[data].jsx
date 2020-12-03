@@ -177,7 +177,7 @@ export default async function main(req, res) {
               req.query.voter +
               '","date": "' +
               new Date() +
-              '", "pb" : "X", vr :"alright"  }';
+              '", "pb" : "X", "vr" :"alright"  }';
             file = await ipfs.add(cntnt);
             console.log("Log : Uploaded to IPFS > " + cntnt);
             var myobj = { user: req.query.voter, lb: file.path };
@@ -193,9 +193,9 @@ export default async function main(req, res) {
               req.query.voter +
               '","date": "' +
               new Date() +
-              '", "pb ": "' +
+              '", "pb": "' +
               lb +
-              '", vr :"alright" }';
+              '", "vr" :"alright" }';
             file = await ipfs.add(cntnt);
             var myobj = { $set: { user: req.query.voter, lb: file.path } };
             var myquery = { user: req.query.voter };

@@ -1,4 +1,4 @@
-rtpaconst IpfsHttpClient = require("ipfs-http-client");
+const IpfsHttpClient = require("ipfs-http-client");
 const MongoClient = require("mongodb").MongoClient;
 var url = process.env.MONGO_SERVER;
 

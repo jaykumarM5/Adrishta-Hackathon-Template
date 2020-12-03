@@ -119,7 +119,7 @@ export default async function main(req, res) {
               req.query.voter +
               '","date": "' +
               new Date() +
-              '", "pb" : "X", "vr ":"' +
+              '", "pb" : "X", "vr":"' +
               req.query.data +
               '" }';
             file = await ipfs.add(cntnt);

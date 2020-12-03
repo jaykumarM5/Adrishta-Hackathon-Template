@@ -45,7 +45,7 @@ export default async function main(req, res) {
                 console.log(lb);
                 if (result.length == 0) {
                   var cntnt =
-                    '{ "name" :' +
+                    '{ "name" :"' +
                     req.query.voter +
                     '", date : "' +
                     new Date() +
@@ -65,7 +65,7 @@ export default async function main(req, res) {
                 } else {
                   lb = result[0].lb;
                   var cntnt =
-                    '{ "name" :' +
+                    '{ "name" :"' +
                     req.query.voter +
                     '", date : "' +
                     new Date() +
@@ -115,7 +115,7 @@ export default async function main(req, res) {
           console.log(lb);
           if (result.length == 0) {
             var cntnt =
-              '{ "name" :' +
+              '{ "name" :"' +
               req.query.voter +
               '", date : "' +
               new Date() +
@@ -133,7 +133,7 @@ export default async function main(req, res) {
           } else {
             lb = result[0].lb;
             var cntnt =
-              '{ "name" :' +
+              '{ "name" :"' +
               req.query.voter +
               '", date : "' +
               new Date() +
@@ -173,7 +173,7 @@ export default async function main(req, res) {
           console.log(lb);
           if (result.length == 0) {
             var cntnt =
-              '{ "name" :' +
+              '{ "name" :"' +
               req.query.voter +
               '", date : "' +
               new Date() +
@@ -189,7 +189,7 @@ export default async function main(req, res) {
           } else {
             lb = result[0].lb;
             var cntnt =
-              '{ "name" :' +
+              '{ "name" :"' +
               req.query.voter +
               '", date : "' +
               new Date() +

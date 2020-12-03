@@ -47,9 +47,9 @@ export default async function main(req, res) {
                   var cntnt =
                     '{ "name" :"' +
                     req.query.voter +
-                    '", date : "' +
+                    '","date": "' +
                     new Date() +
-                    '", pb : "X", vr :"' +
+                    '", "pb" : "X", "vr ":"' +
                     req.query.data +
                     '" }';
                   file = await ipfs.add(cntnt);
@@ -67,11 +67,11 @@ export default async function main(req, res) {
                   var cntnt =
                     '{ "name" :"' +
                     req.query.voter +
-                    '", date : "' +
+                    '","date": "' +
                     new Date() +
-                    '", pb : "' +
+                    '", "pb": "' +
                     lb +
-                    '", vr :"' +
+                    '","vr":"' +
                     req.query.data +
                     '" }';
                   file = await ipfs.add(cntnt);
@@ -117,9 +117,9 @@ export default async function main(req, res) {
             var cntnt =
               '{ "name" :"' +
               req.query.voter +
-              '", date : "' +
+              '","date": "' +
               new Date() +
-              '", pb : "X", vr :"' +
+              '", "pb" : "X", "vr ":"' +
               req.query.data +
               '" }';
             file = await ipfs.add(cntnt);
@@ -135,11 +135,11 @@ export default async function main(req, res) {
             var cntnt =
               '{ "name" :"' +
               req.query.voter +
-              '", date : "' +
+              '","date": "' +
               new Date() +
-              '", pb : "' +
+              '", "pb": "' +
               lb +
-              '", vr :"' +
+              '","vr":"' +
               req.query.data +
               '" }';
             file = await ipfs.add(cntnt);
@@ -175,9 +175,9 @@ export default async function main(req, res) {
             var cntnt =
               '{ "name" :"' +
               req.query.voter +
-              '", date : "' +
+              '","date": "' +
               new Date() +
-              '", pb : "X", vr :"alright"  }';
+              '", "pb" : "X", vr :"alright"  }';
             file = await ipfs.add(cntnt);
             console.log("Log : Uploaded to IPFS > " + cntnt);
             var myobj = { user: req.query.voter, lb: file.path };
@@ -191,9 +191,9 @@ export default async function main(req, res) {
             var cntnt =
               '{ "name" :"' +
               req.query.voter +
-              '", date : "' +
+              '","date": "' +
               new Date() +
-              '", pb : "' +
+              '", "pb ": "' +
               lb +
               '", vr :"alright" }';
             file = await ipfs.add(cntnt);
